@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#define endl "\n" 
+#define endl "\n"
 
 using namespace std;
 
@@ -123,8 +123,8 @@ int main() {
 
         cout << "> Enter the number of equations: ";
 
-        int equationNum;
-        cin >> equationNum;
+        int equationsum;
+        cin >> equationsum;
 
         cout << "> Enter the number of variables, followed by their names (separating everything with a space): ";
 
@@ -141,10 +141,10 @@ int main() {
         // Create matrix with the data
         vector<vector<double>> equations; // equations[row][column]
         vector<vector<double>> equationsB;
-        for (int i = 1; i <= equationNum; i++) {
+        for (int i = 1; i <= equationsum; i++) {
             vector<double> eq;
             vector<double> eqB;
-            cout << "> Enter the coefficients of the " << i << " equation:" << endl;
+            cout << "> Enter the coefficients of the " << i << " equations" << endl;
             for (int j = 0; j < varNum; j++) {
                 cout << "  " << varNames[j] + " = ";
                 double coeff;
@@ -176,7 +176,7 @@ int main() {
         };
         varNames = {"x", "y", "z", "t"};
         */
-        int rows = equationNum;
+        int rows = equationsum;
         int columns = varNum + 1;
         /*
         rows = 4;
@@ -211,26 +211,17 @@ int main() {
             cout << "- Determined compatible system, the system has a single unique solution:" << endl;
         }
 
-        printMatrix(equations);
-
         // Find pivots
         vector<pair<int, int>> pivots;
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < columns - 1; c++) {
-                if (equations[r][c] != 0) { 
+                if (r == rows) break;
+                if (equations[r][c] != 0) {
                     pivots.push_back({r, c});
                     r++;
-                    cout << "numberOFpivots=" << pivots.size();
-                
-                    cout << " go" << endl;
                 }
             }
-            cout << "   dasda " << endl;
         }
-
-        cout << "CHECK " << endl;
-
-        printMatrix(equations);
 
         // Print the regression substitution
         for (int i = 0; i < varNames.size(); i++) {
