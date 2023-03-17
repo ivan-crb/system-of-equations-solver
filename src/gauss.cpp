@@ -217,15 +217,18 @@ int main() {
         vector<pair<int, int>> pivots;
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < columns - 1; c++) {
-                if (equations[r][c] == 0) continue;
-                pivots.push_back({r, c});
-                r++;
-                cout << "numberOFpivots=" << pivots.size();
+                if (equations[r][c] != 0) { 
+                    pivots.push_back({r, c});
+                    r++;
+                    cout << "numberOFpivots=" << pivots.size();
                 
-                cout << " go" << endl;
+                    cout << " go" << endl;
+                }
             }
             cout << "   dasda " << endl;
         }
+
+        cout << "CHECK " << endl;
 
         printMatrix(equations);
 
